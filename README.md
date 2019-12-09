@@ -121,4 +121,4 @@ In order to use the package, clone the repository first and then install the fol
  * After running [main.py](main.py), you will find `output.log` and `LinearSVCdc26f10760747d1c6d94b3a9679d28cf.pkl` under the root of the repository. When you rerun the experiment, the model will be loaded locally instead of re-training from scratch as long as your configurations keep the same.
 
 ## Others
-- More extensions of this package go to [this tutorial](/). Feedback is welcome or any errors/bugs reporting is well appreciated.
+- More extensions of this package go to [this tutorial](in plan). Feedback is welcome or any errors/bugs reporting is well appreciated.
