@@ -53,7 +53,7 @@ In order to use the package, clone the repository first and then install the fol
         "model"] =  LinearSVC(C=0.1)  # Options: LinearSVC(C=0.1),SVC, LogisticRegression(solver='ibfgs'),GaussianNB(),RandomForest, etc.
     ```
 
-3. **Train and save**: Below is an example of model training and save (the script is in main.py). Important stuff are commented below.
+3. **Train and save**: Below is an example of model training and save (the script is in [main.py](main.py)). Important stuff are commented below.
     ```python
    import ml_package.model_handler as mh
     print("=========model training and save======")
@@ -62,7 +62,7 @@ In order to use the package, clone the repository first and then install the fol
     model.train()  # train a model
     mh.save_model(model, configs)  # you can save a model after it is trained
     ```
-4. **Eval and predict**: Below is an example of evaluating train,dev, and test, and predict without ground truth (the script is in main.py). Important stuff are commented below.
+4. **Eval and predict**: Below is an example of evaluating train, dev, and test, and predict without ground truth (the script is in [main.py](main.py)). Important stuff are commented below.
     ```python
     print("=========evaluate on train, dev and test set======")
     model.eval("train")  # classification report for train set
@@ -103,4 +103,4 @@ In order to use the package, clone the repository first and then install the fol
     
     
 ## Others
-- More extensions of this package go to [this tutorial](in plan). Feedback is welcome or any errors/bugs reporting is well appreciated.
+- More extensions of this package go to [this tutorial](/). Feedback is welcome or any errors/bugs reporting is well appreciated.
