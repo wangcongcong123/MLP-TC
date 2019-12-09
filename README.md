@@ -8,7 +8,7 @@ This package empowers to explore the performance difference that different ML te
 ## Highlights
 
 - Well logged for the whole process of training a model for text classification 
-- Fed different datasets into models quickly as long as they are formatted as required.
+- Feed different datasets into models quickly as long as they are formatted as required.
 - Support single or multi label (only binary relevance at this stage) classification
 - Support model save, load, train, predict, eval, etc.
    
