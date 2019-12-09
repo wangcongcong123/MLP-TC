@@ -44,18 +44,18 @@ print("The predicted results are: ", predicted)
 print("=========predict a corpus with ground truth======")
 train_data, _, test_data = model.get_fit_dataset()
 data = test_data
-to_predict_buttom = 0
-to_predict_top = 3
+to_predict_first = 0
+to_predict_last = 3
 
 if configs["type"] == "multi":
     mlb = model.get_multi_label_binarizer()
 
-predicted = model.predict_in_batch(data["features"][to_predict_buttom:to_predict_top].toarray() if hasattr(
-    data["features"][to_predict_buttom:to_predict_top], "toarray") else data["features"][
-                                                                        to_predict_buttom:to_predict_top])
+predicted = model.predict_in_batch(data["features"][to_predict_first:to_predict_last].toarray() if hasattr(
+    data["features"][to_predict_first:to_predict_last], "toarray") else data["features"][
+                                                                       to_predict_first:to_predict_last])
 
-print("Make predictions for:\n ", "\n".join(data["content"][to_predict_buttom:to_predict_top]))
+print("Make predictions for:\n ", "\n".join(data["content"][to_predict_first:to_predict_last]))
 print("Ground truth are:\n ")
-pprint.pprint(data["labels"][to_predict_buttom:to_predict_top])
+pprint.pprint(data["labels"][to_predict_first:to_predict_last])
 print("The predicted results are: ")
 pprint.pprint(mlb.inverse_transform(predicted) if configs["type"] == "multi" else predicted)

@@ -78,29 +78,47 @@ In order to use the package, clone the repository first and then install the fol
     print("Make predictions for:\n ", to_predict["content"])
     print("The predicted results are: ", predicted)
     ```
+     The output:
+      
+        Make predictions for:
+         ['i love you', 'i hate you']
+         The predicted results are:  ['positive' 'negative']
+         
    Predict with ground truth, e.g. the first three examples from test set.
    ```python
     print("=========predict a corpus with ground truth======")
     train_data, _, test_data = model.get_fit_dataset()
     data = test_data
-    to_predict_buttom = 0
-    to_predict_top = 3
+    to_predict_first = 0
+    to_predict_last = 3
     
     if configs["type"] == "multi":
         mlb = model.get_multi_label_binarizer()
     
-    predicted = model.predict_in_batch(data["features"][to_predict_buttom:to_predict_top].toarray() if hasattr(
-        data["features"][to_predict_buttom:to_predict_top], "toarray") else data["features"][
-                                                                            to_predict_buttom:to_predict_top])
+    predicted = model.predict_in_batch(data["features"][to_predict_first:to_predict_last].toarray() if hasattr(
+        data["features"][to_predict_first:to_predict_last], "toarray") else data["features"][
+                                                                            to_predict_first:to_predict_last])
     
-    print("Make predictions for:\n ", "\n".join(data["content"][to_predict_buttom:to_predict_top]))
+    print("Make predictions for:\n ", "\n".join(data["content"][to_predict_first:to_predict_last]))
     print("Ground truth are:\n ")
-    pprint.pprint(data["labels"][to_predict_buttom:to_predict_top])
+    pprint.pprint(data["labels"][to_predict_first:to_predict_last])
     print("The predicted results are: ")
     pprint.pprint(mlb.inverse_transform(predicted) if configs["type"] == "multi" else predicted)
     ```
-    * After running [main.py](main.py), you will find `output.log` and `LinearSVCdc26f10760747d1c6d94b3a9679d28cf.pkl` under the root of the repository. When you rerun the experiment, the model will be loaded locally instead of re-training from scratch as long as your configurations keep the same.
-    
-    
+   The output:
+      
+        =========predict a corpus with ground truth======
+        Make predictions for:
+            Clearwire Is Sought by Sprint for Spectrum: Sprint disclosed on Thursday that it had offered to buy a stake in C... http://t.co/5Ais2S9j
+            5 time @usopen champion Federer defeats 29th seed Kohlschreiber and he's through to the last 16 to play 13th seed Isner or Vesely! #USOpen
+            Old radio commercials for Grateful Dead albums may just be the best thing I've discovered
+            
+        Ground truth are:
+        ['neutral', 'neutral', 'positive']
+        The predicted results are: 
+        array(['neutral', 'negative', 'positive'], dtype='<U8')
+         
+ * After running [main.py](main.py), you will find `output.log` and `LinearSVCdc26f10760747d1c6d94b3a9679d28cf.pkl` under the root of the repository. When you rerun the experiment, the model will be loaded locally instead of re-training from scratch as long as your configurations keep the same.
+
 ## Others
 - More extensions of this package go to [this tutorial](/). Feedback is welcome or any errors/bugs reporting is well appreciated.
